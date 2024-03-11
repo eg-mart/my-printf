@@ -2,7 +2,7 @@ CC := nasm -f elf64
 LD := ld -s
 
 EXE := minimal
-SRCS := minimal.s
+SRCS := main.s
 SRC_DIR := .
 OBJ_DIR := build
 

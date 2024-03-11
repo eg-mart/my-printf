@@ -2,7 +2,7 @@ CC := nasm -f elf64
 LD := ld -s -lc -I /lib64/ld-linux-x86-64.so.2
 
 EXE := c_from_asm
-SRCS := c_from_asm.s
+SRCS := main.s
 LIBS :=
 SRC_DIR := .
 OBJ_DIR := build
