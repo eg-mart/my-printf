@@ -1,5 +1,7 @@
-CC := nasm -f elf64
-LD := ld -s
+AS := nasm
+AS_FLAGS := -f elf64
+LD := ld
+LD_FLAGS := -s
 
 EXE := minimal
 SRCS := main.s
@@ -14,10 +16,10 @@ OBJ_PATHS := $(addprefix $(OBJ_DIR)/, $(OBJS))
 all: $(EXE)
 
 $(EXE) : $(OBJ_PATHS)
-	$(LD) -o $(EXE) $(OBJ_PATHS)
+	$(LD) $(LD_FLAGS) -o $(EXE) $(OBJ_PATHS)
 
 $(OBJ_DIR)/%.o : $(SRC_DIR)/%.s | $(OBJ_DIR)
-	$(CC) -l $(OBJ_DIR)/$*.lst -o $@ $<
+	$(AS) $(AS_FLAGS) -l $(OBJ_DIR)/$*.lst -o $@ $<
 
 $(OBJ_DIR):
 	mkdir $(OBJ_DIR)
