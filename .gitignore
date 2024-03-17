@@ -2,3 +2,4 @@ build/
 c_from_asm/c_from_asm
 minimal/minimal
 asm_from_c/asm_from_c
+printf/printf
