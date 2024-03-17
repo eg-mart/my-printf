@@ -1,5 +1,5 @@
 section .rodata
-HexDigits   db "0123456789ABCDEF"
+HexDigits   db "0123456789abcdef"
 
 align 8
 MyPrintfJmpTable:
