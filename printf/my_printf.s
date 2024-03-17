@@ -26,6 +26,7 @@ extern print_num_hex
 extern print_num_bin
 extern print_string
 extern print_char
+extern print_num_pow2
 
 my_printf:
     pop r11
@@ -289,6 +290,47 @@ print_num_bin:
 
     ret
 ;--------------------------------------------------------------
+
+print_num_pow2:
+    mov rcx, rdx
+    xor rdx, rdx
+    mov rax, 64
+    div rcx
+    mov r11, 64
+    sub r11, rdx
+
+    mov rdx, 1
+    shl rdx, cl
+    dec rdx
+
+    mov r10, rcx
+    mov rcx, r11
+
+.find_first_digit:
+    mov rax, rsi
+    shr rax, cl
+    and rax, rdx
+
+    cmp rax, 0
+    jne .print_digit
+
+    sub rcx, r10
+    cmp cl, 0
+    jg .find_first_digit
+
+.print_digit:
+    mov rax, rsi
+    shr rax, cl
+    and rax, rdx
+
+    add rax, 0x30
+    stosb
+
+    sub rcx, r10
+    cmp cl, 0
+    jge .print_digit
+
+    ret
 
 ;--------------------------------------------------------------
 print_string:
